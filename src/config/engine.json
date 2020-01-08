@@ -1,0 +1,29 @@
+{
+  "engineName": "che-wh",
+  "hostIdentifier": "host-31859g",
+  "endpointBase": "http://157.245.58.183:9900",
+  "searchKey": "search-i1vq31ui99r83aiws1h5brhh",
+  "resultFields": [
+    "images",
+    "price",
+    "name",
+    "link",
+    "categories",
+    "savings",
+    "descriptions",
+    "id"
+  ],
+  "sortFields": [
+    "name",
+    "price",
+    "savings",
+    "categories"
+  ],
+  "facets": [
+    "categories",
+    "price",
+    "savings"
+  ],
+  "titleField": "name",
+  "urlField": "link"
+}
