@@ -1,22 +1,18 @@
 {
-  "engineName": "che-wh",
+  "engineName": "cwh",
   "hostIdentifier": "host-31859g",
-  "endpointBase": "http://157.245.58.183:9900",
+  "endpointBase": "https://as.trtin.com",
   "searchKey": "search-i1vq31ui99r83aiws1h5brhh",
   "resultFields": [
-    "images",
     "price",
     "name",
-    "link",
     "categories",
     "savings",
-    "descriptions",
-    "id"
+    "descriptions"
   ],
   "sortFields": [
     "name",
-    "price",
-    "savings",
+    "retail",
     "categories"
   ],
   "facets": [
