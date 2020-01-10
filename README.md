@@ -144,11 +144,11 @@ Thank you to all the [contributors](https://github.com/elastic/app-search-refere
 
 function Result(_ref) {
   var className = _ref.className,
-      result = _ref.result,
-      onClickLink = _ref.onClickLink,
-      titleField = _ref.titleField,
-      urlField = _ref.urlField,
-      rest = _objectWithoutProperties(_ref, ["className", "result", "onClickLink", "titleField", "urlField"]);
+    result = _ref.result,
+    onClickLink = _ref.onClickLink,
+    titleField = _ref.titleField,
+    urlField = _ref.urlField,
+    rest = _objectWithoutProperties(_ref, ["className", "result", "onClickLink", "titleField", "urlField"]);
 
   var fields = getEscapedFields(result);
   var title = getEscapedField(result, titleField);
@@ -179,10 +179,10 @@ function Result(_ref) {
     className: "sui-result__details"
   }, Object.entries(fields).map(function (_ref2) {
     var _ref3 = _slicedToArray(_ref2, 2),
-        fieldName = _ref3[0],
-        fieldValue = _ref3[1];
-      
-    if(['images','name', 'link', 'id'].includes(fieldName))
+      fieldName = _ref3[0],
+      fieldValue = _ref3[1];
+
+    if (['images', 'name', 'link', 'id', 'descriptions'].includes(fieldName))
       return;
     return React.createElement("li", {
       key: fieldName
@@ -195,38 +195,55 @@ function Result(_ref) {
       }
     }));
   })
-  .concat([
-    images.length && React.createElement("li", {
-      key: title
-    }, " ", React.createElement("img", {
-      className: "",
-      src: images.length && JSON.parse(images[0]).src,
-      width: 300
-    }))
-  ])
-  .concat([
-    images.length && React.createElement("li", {
-      key: 'there is not' + Math.random()
-    }, "", React.createElement("ul", {
-      className: "sui-result__details",
-      src: images.length && JSON.parse(images[0]).src,
-      width: 300
-    },descriptions
-      .filter(x=> JSON.parse(x).detail !== '')
-      .map(x=> {
-        var value = JSON.parse(x);
-        return React.createElement("li", {
-          key: 'there is not' + Math.random()
-        }, React.createElement("span", {
-          className: "sui-result__key"
-        }, ''), " ", React.createElement("span", {
-          className: "sui-result__value",
-          dangerouslySetInnerHTML: {
-            __html: value.html
-          }
-        }));
-      })
-    ))
-  ])
+    .concat([
+      images.length && React.createElement("li", {
+        key: title
+      }, " ", React.createElement("img", {
+        className: "",
+        src: images.length && JSON.parse(images[0]).src,
+        width: 300
+      }))
+    ])
+    .concat([
+      descriptions
+        .filter(x => JSON.parse(x).detail !== '')
+        .map(x => {
+          var value = JSON.parse(x);
+          return React.createElement("li", {
+            key: 'there is not' + Math.random()
+          }, React.createElement("span", {
+            className: "sui-result__key"
+          }, value.title), React.createElement("span", {
+            className: "sui-result__value",
+            dangerouslySetInnerHTML: {
+              __html: value.html
+            }
+          }));
+        })
+    ])
+    // .concat([
+    //   images.length && React.createElement("li", {
+    //     key: 'there is not' + Math.random()
+    //   }, "", React.createElement("ul", {
+    //     className: "sui-result__details",
+    //   }, descriptions
+    //     .filter(x => JSON.parse(x).detail !== '')
+    //     .map(x => {
+    //       var value = JSON.parse(x);
+    //       return React.createElement("li", {
+    //         key: 'there is not' + Math.random()
+    //       }, React.createElement("span", {
+    //         className: "sui-result__key"
+    //       }, value.title), React.createElement("span", {
+    //         className: "sui-result__value",
+    //         dangerouslySetInnerHTML: {
+    //           __html: value.html
+    //         }
+    //       }));
+    //     })
+    //   ))
+    // ])
+
+
   )));
 }
