@@ -8,7 +8,9 @@
     "name",
     "categories",
     "savings",
-    "descriptions"
+    "descriptions",
+    "retail",
+    "images"
   ],
   "sortFields": [
     "name",

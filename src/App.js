@@ -14,6 +14,7 @@ import {
   Sorting,
   WithSearch
 } from "@elastic/react-search-ui";
+// import ResultView from './components/customizedResult';
 import { Layout } from "@elastic/react-search-ui-views";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 

@@ -139,3 +139,94 @@ We welcome contributors to the project. Before you begin, a couple notes...
 [Apache-2.0](https://github.com/elastic/app-search-reference-ui-react/blob/master/LICENSE.md) © [Elastic](https://github.com/elastic)
 
 Thank you to all the [contributors](https://github.com/elastic/app-search-reference-ui-react/graphs/contributors)!
+
+# node_modules/@elastic/react-search-ui-views/es/Result.js
+
+function Result(_ref) {
+  var className = _ref.className,
+      result = _ref.result,
+      onClickLink = _ref.onClickLink,
+      titleField = _ref.titleField,
+      urlField = _ref.urlField,
+      rest = _objectWithoutProperties(_ref, ["className", "result", "onClickLink", "titleField", "urlField"]);
+
+  var fields = getEscapedFields(result);
+  var title = getEscapedField(result, titleField);
+  var url = getRaw(result, urlField);
+  var images = getRaw(result, 'images');
+  var descriptions = getRaw(result, 'descriptions');
+  return React.createElement("li", _extends({
+    className: appendClassName("sui-result", className)
+  }, rest), React.createElement("div", {
+    className: "sui-result__header"
+  }, title && !url && React.createElement("span", {
+    className: "sui-result__title",
+    dangerouslySetInnerHTML: {
+      __html: title
+    }
+  }), title && url && React.createElement("a", {
+    className: "sui-result__title sui-result__title-link",
+    dangerouslySetInnerHTML: {
+      __html: title
+    },
+    href: url,
+    onClick: onClickLink,
+    target: "_blank",
+    rel: "noopener noreferrer"
+  })), React.createElement("div", {
+    className: "sui-result__body"
+  }, React.createElement("ul", {
+    className: "sui-result__details"
+  }, Object.entries(fields).map(function (_ref2) {
+    var _ref3 = _slicedToArray(_ref2, 2),
+        fieldName = _ref3[0],
+        fieldValue = _ref3[1];
+      
+    if(['images','name', 'link', 'id'].includes(fieldName))
+      return;
+    return React.createElement("li", {
+      key: fieldName
+    }, React.createElement("span", {
+      className: "sui-result__key"
+    }, fieldName), " ", React.createElement("span", {
+      className: "sui-result__value",
+      dangerouslySetInnerHTML: {
+        __html: fieldValue
+      }
+    }));
+  })
+  .concat([
+    images.length && React.createElement("li", {
+      key: title
+    }, " ", React.createElement("img", {
+      className: "",
+      src: images.length && JSON.parse(images[0]).src,
+      width: 300
+    }))
+  ])
+  .concat([
+    images.length && React.createElement("li", {
+      key: 'there is not' + Math.random()
+    }, "", React.createElement("ul", {
+      className: "sui-result__details",
+      src: images.length && JSON.parse(images[0]).src,
+      width: 300
+    },descriptions
+      .filter(x=> JSON.parse(x).detail !== '')
+      .map(x=> {
+        var value = JSON.parse(x);
+        return React.createElement("li", {
+          key: 'there is not' + Math.random()
+        }, React.createElement("span", {
+          className: "sui-result__key"
+        }, ''), " ", React.createElement("span", {
+          className: "sui-result__value",
+          dangerouslySetInnerHTML: {
+            __html: value.html
+          }
+        }));
+      })
+    ))
+  ])
+  )));
+}
